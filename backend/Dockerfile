@@ -28,4 +28,4 @@ COPY app ./app
 COPY shared ./shared
 
 EXPOSE 8000
-CMD ["uvicorn", "app.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn app.api.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
