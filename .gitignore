@@ -1,0 +1,181 @@
+# ============================================================
+# DocuMind - Git Ignore
+# ============================================================
+
+# ------------------------------------------------------------
+# SECRETS / ENVIRONMENT VARIABLES
+# ------------------------------------------------------------
+
+# All .env files
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Allow ONLY example environment files
+!.env.example
+!**/.env.example
+
+# Other common secret/config files
+*.secret
+*.secrets
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+
+# Cloud/service credentials
+credentials.json
+service-account.json
+service-account-key.json
+
+# ------------------------------------------------------------
+# PYTHON
+# ------------------------------------------------------------
+
+__pycache__/
+**/__pycache__/
+
+*.py[cod]
+*.pyo
+*.pyd
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pytype/
+
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# ------------------------------------------------------------
+# PYTHON VIRTUAL ENVIRONMENTS
+# ------------------------------------------------------------
+
+.venv/
+venv/
+env/
+ENV/
+**/.venv/
+**/venv/
+
+# ------------------------------------------------------------
+# NODE / NPM
+# ------------------------------------------------------------
+
+node_modules/
+**/node_modules/
+
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+.npm/
+.yarn/
+.pnpm-store/
+
+# ------------------------------------------------------------
+# FRONTEND BUILD / VITE
+# ------------------------------------------------------------
+
+frontend/dist/
+frontend/.vite/
+dist/
+.vite/
+
+# ------------------------------------------------------------
+# BACKEND GENERATED DATA
+# ------------------------------------------------------------
+
+# Uploaded documents / generated application data
+backend/data/*
+!backend/data/.gitkeep
+
+# Generic runtime data
+data/
+uploads/
+tmp/
+temp/
+
+# ------------------------------------------------------------
+# LOGS
+# ------------------------------------------------------------
+
+*.log
+logs/
+
+# ------------------------------------------------------------
+# DATABASE / LOCAL STORAGE
+# ------------------------------------------------------------
+
+*.db
+*.sqlite
+*.sqlite3
+
+# ------------------------------------------------------------
+# MODEL / ML CACHE
+# ------------------------------------------------------------
+
+# Hugging Face
+.cache/
+huggingface/
+hf_cache/
+**/hf_cache/
+
+# ML model files
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+
+# ------------------------------------------------------------
+# JUPYTER
+# ------------------------------------------------------------
+
+.ipynb_checkpoints/
+
+# ------------------------------------------------------------
+# TEST / COVERAGE OUTPUT
+# ------------------------------------------------------------
+
+coverage/
+htmlcov/
+.pytest_cache/
+
+# ------------------------------------------------------------
+# IDE / EDITORS
+# ------------------------------------------------------------
+
+.vscode/
+.idea/
+*.code-workspace
+
+# VS Code local history
+.history/
+
+# ------------------------------------------------------------
+# OPERATING SYSTEM
+# ------------------------------------------------------------
+
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ------------------------------------------------------------
+# TEMPORARY FILES
+# ------------------------------------------------------------
+
+*.tmp
+*.temp
+*.swp
+*.swo
+*~

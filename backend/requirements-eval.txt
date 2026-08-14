@@ -1,0 +1,19 @@
+# DocuMind EVAL deps — install into a SEPARATE venv (.venv-eval).
+# RAGAS depends on an older langchain-core line than the serving stack, so we
+# isolate it. The eval harness imports DocuMind's retrieval modules directly,
+# which only need the lightweight retrieval deps also listed here.
+ragas>=0.4.3
+datasets>=5.0.0
+langchain-google-genai>=4.2.5          # free Gemini Flash judge for LLM-as-judge metrics
+fpdf2>=2.8.0                           # generates the sample PDF corpus (make_sample_docs.py)
+
+# Retrieval bits the eval harness imports directly from app/
+qdrant-client>=1.18.0
+sentence-transformers>=5.6.0
+rank-bm25>=0.2.2
+tiktoken>=0.8.0
+pypdf>=5.1.0
+litellm>=1.89.3
+pydantic>=2.13.4
+pydantic-settings>=2.7.0
+python-dotenv>=1.0.1

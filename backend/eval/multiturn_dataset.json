@@ -1,0 +1,95 @@
+{
+  "description": "Multi-turn eval — 10 short conversations over the sample corpus (Atlas X200 manual + AcmeNet support policy). Each follow-up is deliberately underspecified (pronouns / ellipsis) so retrieving on the raw follow-up should underperform retrieving on the condensed standalone query. gold_substring must appear in a retrieved chunk.",
+  "cases": [
+    {
+      "id": "mt01",
+      "history": [
+        {"role": "user", "content": "What does error code E-4021 mean on the Atlas X200?"},
+        {"role": "assistant", "content": "E-4021 is a thermal shutdown caused by overheating. Power off the unit and let it cool for 10 minutes."}
+      ],
+      "followup": "How do I fix it?",
+      "gold_substring": "cool for 10 minutes"
+    },
+    {
+      "id": "mt02",
+      "history": [
+        {"role": "user", "content": "Tell me about the Atlas X200 air filter."},
+        {"role": "assistant", "content": "The Atlas X200 has a replaceable air filter that keeps dust out of the cooling system."}
+      ],
+      "followup": "What's its part number?",
+      "gold_substring": "SKU-9981"
+    },
+    {
+      "id": "mt03",
+      "history": [
+        {"role": "user", "content": "How fast does Priority support respond?"},
+        {"role": "assistant", "content": "Priority support responds within 4 hours."}
+      ],
+      "followup": "And what if they don't resolve the ticket?",
+      "gold_substring": "escalated to a senior engineer after 8 hours"
+    },
+    {
+      "id": "mt04",
+      "history": [
+        {"role": "user", "content": "What is the standard warranty period for the Atlas X200?"},
+        {"role": "assistant", "content": "The standard hardware warranty is 36 months."}
+      ],
+      "followup": "What voids it?",
+      "gold_substring": "power surges, liquid ingress, or unauthorized firmware modification"
+    },
+    {
+      "id": "mt05",
+      "history": [
+        {"role": "user", "content": "How many Gigabit Ethernet ports does the Atlas X200 have?"},
+        {"role": "assistant", "content": "It has 8 Gigabit Ethernet ports."}
+      ],
+      "followup": "What about the SFP+ ones?",
+      "gold_substring": "2 SFP+ ports rated at 10 Gbps"
+    },
+    {
+      "id": "mt06",
+      "history": [
+        {"role": "user", "content": "Can I return hardware to AcmeNet for a refund?"},
+        {"role": "assistant", "content": "Yes — hardware can be returned within 30 days of delivery for a full refund."}
+      ],
+      "followup": "And after that window?",
+      "gold_substring": "15 percent restocking fee"
+    },
+    {
+      "id": "mt07",
+      "history": [
+        {"role": "user", "content": "What firmware does the Atlas X200 ship with?"},
+        {"role": "assistant", "content": "It ships with firmware version 4.8.2."}
+      ],
+      "followup": "How often should I update it?",
+      "gold_substring": "updated quarterly"
+    },
+    {
+      "id": "mt08",
+      "history": [
+        {"role": "user", "content": "How do I factory reset the Atlas X200?"},
+        {"role": "assistant", "content": "Hold the reset button for 15 seconds until the LED blinks amber."}
+      ],
+      "followup": "What's the default admin username after that?",
+      "gold_substring": "atlas-admin"
+    },
+    {
+      "id": "mt09",
+      "history": [
+        {"role": "user", "content": "What error code means the fan has failed?"},
+        {"role": "assistant", "content": "E-5500 indicates a fan failure; the device should be serviced immediately."}
+      ],
+      "followup": "How often should I inspect them to avoid that?",
+      "gold_substring": "every 90 days"
+    },
+    {
+      "id": "mt10",
+      "history": [
+        {"role": "user", "content": "How fast does Mission Critical support respond?"},
+        {"role": "assistant", "content": "Mission Critical support responds within 1 hour, 24/7."}
+      ],
+      "followup": "How does that compare to the Priority tier's response time?",
+      "gold_substring": "within 4 hours"
+    }
+  ]
+}

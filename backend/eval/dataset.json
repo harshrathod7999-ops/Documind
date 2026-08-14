@@ -1,0 +1,38 @@
+{
+  "description": "DocuMind eval set — 30 questions over the sample corpus (Atlas X200 manual + AcmeNet support policy). gold_substring is a string that MUST appear in a retrieved chunk for the answer to be supportable; used for hit@k / MRR. unanswerable=true means the corpus does NOT contain the answer (honest-refusal test).",
+  "cases": [
+    {"id": "q01", "type": "exact_match", "question": "What does error code E-4021 mean on the Atlas X200?", "gold_substring": "thermal shutdown caused by overheating", "expected_answer": "E-4021 is a thermal shutdown caused by overheating; power off and cool for 10 minutes."},
+    {"id": "q02", "type": "exact_match", "question": "What is the part number for the Atlas X200 air filter?", "gold_substring": "SKU-9981", "expected_answer": "The air filter part number is SKU-9981."},
+    {"id": "q03", "type": "exact_match", "question": "What is the default management IP address?", "gold_substring": "192.168.10.1", "expected_answer": "The default management IP is 192.168.10.1."},
+    {"id": "q04", "type": "exact_match", "question": "Which firmware version does the Atlas X200 ship with?", "gold_substring": "4.8.2", "expected_answer": "It ships with firmware version 4.8.2."},
+    {"id": "q05", "type": "exact_match", "question": "What does error code E-5500 indicate?", "gold_substring": "fan failure", "expected_answer": "E-5500 indicates a fan failure; service the device immediately."},
+    {"id": "q06", "type": "exact_match", "question": "What is the default admin username?", "gold_substring": "atlas-admin", "expected_answer": "The default admin username is atlas-admin."},
+    {"id": "q07", "type": "exact_match", "question": "How many Gigabit Ethernet ports does the Atlas X200 have?", "gold_substring": "8 Gigabit Ethernet ports", "expected_answer": "It has 8 Gigabit Ethernet ports."},
+    {"id": "q08", "type": "exact_match", "question": "What does error code E-1002 mean?", "gold_substring": "WAN link is down", "expected_answer": "E-1002 means the WAN link is down."},
+    {"id": "q09", "type": "exact_match", "question": "What is the maximum throughput of the Atlas X200?", "gold_substring": "9.4 Gbps", "expected_answer": "Maximum throughput is 9.4 Gbps."},
+    {"id": "q10", "type": "exact_match", "question": "How long do you hold the reset button to factory reset?", "gold_substring": "15 seconds", "expected_answer": "Hold the reset button for 15 seconds until the LED blinks amber."},
+
+    {"id": "q11", "type": "conceptual", "question": "What temperature range can the router operate in?", "gold_substring": "-20C and 65C", "expected_answer": "It operates between -20C and 65C."},
+    {"id": "q12", "type": "conceptual", "question": "How often should I inspect the cooling fans?", "gold_substring": "every 90 days", "expected_answer": "Inspect the cooling fans every 90 days."},
+    {"id": "q13", "type": "conceptual", "question": "How much power does the device use at peak?", "gold_substring": "55 watts peak", "expected_answer": "Peak power draw is 55 watts."},
+    {"id": "q14", "type": "conceptual", "question": "What should I do if the unit overheats and shuts down?", "gold_substring": "cool for 10 minutes", "expected_answer": "Power it off and let it cool for 10 minutes."},
+    {"id": "q15", "type": "conceptual", "question": "How far does the wireless signal reach outdoors?", "gold_substring": "120 meters outdoors", "expected_answer": "Up to 120 meters outdoors."},
+    {"id": "q16", "type": "conceptual", "question": "How quickly does Priority support respond?", "gold_substring": "within 4 hours", "expected_answer": "Priority support responds within 4 hours."},
+    {"id": "q17", "type": "conceptual", "question": "What happens to a Priority ticket that isn't resolved?", "gold_substring": "escalated to a senior engineer after 8 hours", "expected_answer": "It is escalated to a senior engineer after 8 hours."},
+    {"id": "q18", "type": "conceptual", "question": "Can I get a full refund on returned hardware?", "gold_substring": "within 30 days of delivery for a full refund", "expected_answer": "Yes, within 30 days of delivery; after that a 15% restocking fee applies."},
+    {"id": "q19", "type": "conceptual", "question": "How fast does Mission Critical support respond?", "gold_substring": "within 1 hour", "expected_answer": "Mission Critical support responds within 1 hour, 24/7."},
+    {"id": "q20", "type": "conceptual", "question": "How often should firmware be updated?", "gold_substring": "updated quarterly", "expected_answer": "Firmware should be updated quarterly."},
+    {"id": "q21", "type": "conceptual", "question": "What weight is the Atlas X200?", "gold_substring": "1.6 kilograms", "expected_answer": "It weighs 1.6 kilograms."},
+    {"id": "q22", "type": "conceptual", "question": "What is the restocking fee after the return window?", "gold_substring": "15 percent restocking fee", "expected_answer": "A 15 percent restocking fee applies after 30 days."},
+    {"id": "q23", "type": "conceptual", "question": "How many SFP+ ports are there and how fast are they?", "gold_substring": "2 SFP+ ports rated at 10 Gbps", "expected_answer": "Two SFP+ ports rated at 10 Gbps."},
+    {"id": "q24", "type": "conceptual", "question": "What voids the warranty?", "gold_substring": "power surges, liquid ingress, or unauthorized firmware modification", "expected_answer": "Power surges, liquid ingress, or unauthorized firmware modification."},
+
+    {"id": "q25", "type": "conflict", "question": "What is the warranty period for the Atlas X200?", "gold_substring": "36 months", "expected_answer": "The standard hardware warranty is 36 months, but the extended care plan extends it to 60 months. Sources conflict and both should be cited.", "conflict": true},
+    {"id": "q26", "type": "conflict", "question": "How long is the extended warranty?", "gold_substring": "extended to 60 months", "expected_answer": "Under the extended care plan, the warranty is extended to 60 months (vs the standard 36 months)."},
+
+    {"id": "q27", "type": "unanswerable", "question": "What is the Atlas X200's IP67 dust rating?", "gold_substring": "", "expected_answer": "Not stated in the documents.", "unanswerable": true},
+    {"id": "q28", "type": "unanswerable", "question": "Does the Atlas X200 support Wi-Fi 7?", "gold_substring": "", "expected_answer": "Not stated in the documents.", "unanswerable": true},
+    {"id": "q29", "type": "unanswerable", "question": "What is the CEO of AcmeNet's name?", "gold_substring": "", "expected_answer": "Not stated in the documents.", "unanswerable": true},
+    {"id": "q30", "type": "unanswerable", "question": "What is the monthly price of the Mission Critical support tier?", "gold_substring": "", "expected_answer": "Not stated in the documents.", "unanswerable": true}
+  ]
+}

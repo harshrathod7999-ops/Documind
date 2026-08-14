@@ -1,0 +1,29 @@
+# DocuMind backend RUNTIME deps (serving). Eval deps live in requirements-eval.txt
+# (RAGAS pulls an older langchain-core that conflicts with the rest, so we keep
+# the two environments separate — eval is an offline job, not part of serving).
+# Pins below are the verified floor (2026-06-22); installing newer is fine.
+fastapi>=0.138.0
+uvicorn[standard]>=0.49.0
+pydantic>=2.13.4
+pydantic-settings>=2.7.0
+python-multipart>=0.0.18
+
+# Shared LLM router
+litellm>=1.89.3
+google-genai>=2.9.0
+groq>=1.5.0
+
+# Observability
+langfuse>=4.9.1
+
+# Retrieval stack
+qdrant-client>=1.18.0
+sentence-transformers>=5.6.0          # bge-large embeddings + cross-encoder reranker
+rank-bm25>=0.2.2                       # lexical BM25 retriever
+tiktoken>=0.8.0                        # token counting for chunking
+
+# Document parsing (structure-aware)
+pypdf>=5.1.0
+python-docx>=1.2.0                     # DOCX ingestion
+
+python-dotenv>=1.0.1

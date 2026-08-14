@@ -1,0 +1,13 @@
+# Build context is this backend/ folder — keep it lean.
+.venv
+.venv-eval
+__pycache__
+**/__pycache__
+*.log
+*.err
+data/uploads
+eval/sample_docs
+hf_cache
+.env
+.pytest_cache
+.ruff_cache
