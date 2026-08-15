@@ -2,8 +2,6 @@
 
 Ask natural-language questions across your documents (**PDF, DOCX, TXT, MD**) and get answers **grounded in the source with page-level citations** — click any citation to open the **original PDF at the cited page with the passage highlighted**. Follow-up questions work (**multi-turn conversational RAG** with query condensing), every answer ships a **"How this answer was found" inspector** showing the dense/BM25/RRF/rerank pipeline stages, and the model says an honest "not in the documents" when the answer isn't there. Built on **free models only** (local embeddings/reranker + Groq/Gemini free tier).
 
-> **Why this project exists:** retrieval engineering is the #1 in-demand GenAI skill, and most demos ship naive top-k vector search that quietly fails on exact-match queries (IDs, codes, SKUs) and surfaces irrelevant chunks. DocuMind ships the **production pattern**: hybrid retrieval → RRF fusion → cross-encoder reranking, measured with a real eval set that quantifies the lift.
-
 ---
 
 ## Architecture
@@ -120,11 +118,7 @@ python eval/run_multiturn_eval.py                     # follow-up condensing lif
 - **~256-token chunks (the CLAUDE spec suggested ~400).** On this corpus, smaller chunks gave more precise citations and finer retrieval granularity, and made `top-k` retrieval actually selective rather than returning most of a tiny index. For large documents, 400+ tokens trades precision for a smaller, cheaper index — `CHUNK_TOKENS` is configurable. This is a deliberate, measured choice, not a default.
 - **Honest refusal is enforced in the prompt and verified in eval.** The model must answer only from the numbered sources; unanswerable questions are a scored test case, not an afterthought.
 - **Groq primary → Gemini fallback** via the vendored [`shared/llm.py`](backend/shared/llm.py): Groq is fast and free but rate-limited; on a 429 we back off then fall back to Gemini Flash, so the demo stays up.
-- **Follow-up condensing over full conversational retrieval.** Multi-turn RAG needs the *retrieval query* to be standalone; we spend one cheap LLM call (`gpt-oss-20b`) rewriting follow-ups instead of embedding whole conversations. First turns skip the call entirely, and any failure falls back to the raw question — the feature can degrade but never break `/ask`.
-- **Chat sessions in localStorage, not a backend DB.** DocuMind ships as a standalone zip; SQLite would add schema/migrations/CRUD for zero demo value in a single-user tool. Trade-off: chats don't roam across browsers (noted, accepted).
-- **Doc summaries in sidecar JSON, not Qdrant payloads.** Duplicating a summary onto every chunk point bloats payloads, and a synthetic "meta point" would pollute search. One small file per doc, merged into `/documents` at read time.
 - **Files stored under `{doc_id}.{ext}`, not the original filename.** Two different files with the same name must not overwrite each other's bytes — the doc_id is content-addressed, so the citation viewer always serves the exact file that was indexed.
-- **Snippet highlighting in the PDF viewer is best-effort by design.** pdf.js text items are short line fragments; we match progressively shorter snippet prefixes and fall back to just opening the cited page rather than blocking on fuzzy matching.
 
 ## Known limitations
 
@@ -161,10 +155,6 @@ Upload documents (drag-drop or click) in the left panel, then ask away. Click an
 
 > **First start takes ~20–60s** while the embedding + reranker models load. The backend preloads them in a background thread on startup (so they're not loaded on your first question), and the UI shows a one-time "warming up" banner driven by `models_ready` on `/health`. Once it disappears, retrieval is fast.
 
-## Deploy (free tier)
-
-- **Backend** → Render / HF Spaces via the [`Dockerfile`](backend/Dockerfile) (self-contained — build from `backend/`: `docker build -t documind-api .`). Use **Qdrant Cloud** free tier for the vector store; set `QDRANT_URL`/`QDRANT_API_KEY`.
-- **Frontend** → Vercel. Set `VITE_API_BASE` to the deployed backend URL.
 
 ## API
 
